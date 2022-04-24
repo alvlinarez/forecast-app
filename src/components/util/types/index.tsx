@@ -3,6 +3,10 @@ interface TGeocodingAddress {
     x: string;
     y: string;
   };
+  addressComponents: {
+    city: string;
+    state: string;
+  };
 }
 
 export interface TGeocoding {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForecastContext } from '../../context';
+import { useForecastContext } from '../../../context';
 
 const ErrorMessage: React.FunctionComponent = () => {
   const { error } = useForecastContext();
