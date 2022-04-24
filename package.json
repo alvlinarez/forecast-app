@@ -22,7 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "REACT_APP_GEOCODING_URL=https://cors-e.herokuapp.com/https://geocoding.geo.census.gov/geocoder/locations/onelineaddress REACT_APP_WEATHER_URL=https://api.weather.gov/ react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

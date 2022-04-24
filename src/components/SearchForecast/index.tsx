@@ -5,6 +5,12 @@ import { TForecast, TGeocoding, TWeather } from '../util/types';
 import { css } from '@emotion/css';
 import searchIcon from '../../images/search-icon.png';
 
+// urls should be environment variables but for practical reasons for this app
+// I leave them as this
+const geoCodingUrl =
+  'https://cors-e.herokuapp.com/https://geocoding.geo.census.gov/geocoder/locations/onelineaddress';
+const weatherUrl = 'https://api.weather.gov/';
+
 const SearchForecast: React.FunctionComponent = () => {
   const {
     address,
@@ -49,8 +55,7 @@ const SearchForecast: React.FunctionComponent = () => {
       const {
         data: { result }
       } = (await axios.get(
-        process.env.REACT_APP_GEOCODING_URL +
-          `?address=${addressFormatted}&benchmark=2020&format=json`
+        geoCodingUrl + `?address=${addressFormatted}&benchmark=2020&format=json`
       )) as TGeocoding;
       const coordinateX = result.addressMatches[0].coordinates.x;
       const coordinateY = result.addressMatches[0].coordinates.y;
@@ -66,8 +71,7 @@ const SearchForecast: React.FunctionComponent = () => {
           properties: { forecast: forecastUrl }
         }
       } = (await axios.get(
-        process.env.REACT_APP_WEATHER_URL +
-          `points/${coordinateY},${coordinateX}`
+        weatherUrl + `points/${coordinateY},${coordinateX}`
       )) as TWeather;
 
       const { data } = (await axios.get(forecastUrl)) as TForecast;
